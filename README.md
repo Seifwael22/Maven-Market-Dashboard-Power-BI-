@@ -17,51 +17,17 @@ The primary objectives of this project are:
 
 ## **Agenda**
 
-1. [Key Metrics & Insights](#key-metrics--insights)
-2. [Data Source](#data-source)
-3. [Technologies Used](#technologies-used)
-4. [Visualizations](#visualizations)
-5. [Data Cleaning & Transformation](#data-cleaning--transformation)
-6. [Data Modeling](#data-modeling)
-7. [Challenges Faced](#challenges-faced)
-8. [Key Takeaways](#key-takeaways)
-9. [Next Steps](#next-steps)
-10. [Dashboard Pages](#dashboard-pages)
-
----
-## **Key Insights from 1998 Data**
-
-- **Hermanos** has the **most transactions** (5,342) and **highest profit** ($21,753), outperforming other products in terms of both volume and financial contribution.
-- **Plato** leads in **profit margin** with a remarkable **63.55%**, indicating its strong profitability despite its relatively lower volume of transactions.
-- **Horatio** experiences the **highest return rate** (1.26%), which suggests potential issues with customer satisfaction or product quality.
-- The **USA** region has the **most transactions** (93,986), driving a significant portion of the sales, with the highest concentration of revenue coming from this region.
-- **Washington** stands out with the **highest number of transactions** in 1998, demonstrating its dominant market presence compared to other states.
-- **Weekly revenue peaked on 12/6/1998**, with a total of **$44,859.59**, exceeding the target of $36,000. This week saw particularly strong sales performance, reflecting seasonal trends or effective promotional campaigns.
-
-
-### **KPIs & Metrics**
-
-Several KPIs and metrics were analyzed, including:
-
-- **Total Revenue**: Measures the total revenue generated from all transactions.
-- **Total Profit**: Represents the total profit made from all transactions.
-- **Return Rate**: The percentage of products returned by customers.
-- **Average Order Value (AOV)**: Represents the average amount spent per order.
-- **Sales Growth**: Measures the percentage change in revenue over time.
-- **Revenue by Product Category**: Breaks down the total revenue by product category to assess profitability.
-
-### **Main Findings**
-- **Revenue Trends**: Fluctuations in revenue were observed in both 1997 and 1998. These fluctuations highlight peak sales periods and varying product performance.
-- **Product Performance**: Certain product brands performed significantly better, helping to guide inventory and marketing decisions.
-- **Return Rates**: Some products had high return rates, potentially signaling customer dissatisfaction or product quality issues.
-- **Customer Behavior**: Repeat purchases were more common within certain customer segments, suggesting areas for targeted marketing efforts.
-
----
-
-## **Data Source**
-
-- **Source**: The **Maven Market dataset** is publicly available and includes sales, product, and customer data.
-- **Dataset Availability**: Yes, the dataset is publicly available and can be found in this repository.
+1. [Project Overview](#project-overview)
+2. [Technologies Used](#technologies-used)
+3. [Data Source](#data-source)
+4. [Data Cleaning & Transformation](#data-cleaning--transformation)
+5. [Data Modeling](#data-modeling)
+6. [Visualizations](#visualizations)
+7. [Dashboard Pages](#dashboard-pages)
+8. [Key Insights](#key-insights-from-1997--1998-data)
+9. [Challenges Faced](#challenges-faced)
+10. [Key Takeaways](#key-takeaways)
+11. [Next Steps](#next-steps)
 
 ---
 
@@ -77,7 +43,34 @@ Several KPIs and metrics were analyzed, including:
 
 ---
 
+## **Data Source**
+
+- **Source**: The **Maven Market dataset** is publicly available and includes sales, product, and customer data.
+- **Dataset Availability**: Yes, the dataset is publicly available and can be found in this repository.
+
+---
+
+## **Data Cleaning & Transformation**
+
+Key data cleaning and transformation steps included:
+
+- **Standardized Data Formats**: Ensured consistency across date, currency, and region columns.
+- **Created New Columns**: 
+  - **Customer Table**: Created full name, year of birth, and customer behavior columns (e.g., "Has Children").
+  - **Product Table**: Added discounted price and ensured proper encoding for categorical data.
+  - **Store Table**: Created full address and extracted area code.
+  - **Calendar Table**: Added time-related columns like the start of the week, day name, month name, quarter, and year.
+- **Key Measures**:
+  - **Revenue Measures**: Total Revenue, Monthly Revenue, Discounted Revenue, etc.  
+  - **Profit Measures**: Total Profit, Profit Margin.  
+  - **Customer Metrics**: Average Order Value (AOV), Repeat Purchase Rate, Customer Lifetime Value (CLV).  
+  - **Transaction Metrics**: Total Transactions, Average Basket Size.  
+  - **Return Metrics**: Return Rate, Total Returns.  
+
+---
+
 ## **Data Modeling**
+
 ![image](https://github.com/user-attachments/assets/7ce3261f-25b9-42cc-9f82-e3b2263f2600)
 
 ### **Star Schema**
@@ -168,22 +161,25 @@ Focuses on customer-level analysis:
 
 ---
 
-## **Data Cleaning & Transformation**
+## **Key Insights from 1998 Data**
 
-Key data cleaning and transformation steps included:
+- **Hermanos** has the **most transactions** (5,342) and **highest profit** ($21,753), outperforming other products in terms of both volume and financial contribution.
+- **Plato** leads in **profit margin** with a remarkable **63.55%**, indicating its strong profitability despite its relatively lower volume of transactions.
+- **Horatio** experiences the **highest return rate** (1.26%), which suggests potential issues with customer satisfaction or product quality.
+- The **USA** region has the **most transactions** (93,986), driving a significant portion of the sales, with the highest concentration of revenue coming from this region.
+- **Washington** stands out with the **highest number of transactions** in 1998, demonstrating its dominant market presence compared to other states.
+- **Weekly revenue peaked on 12/6/1998**, with a total of **$44,859.59**, exceeding the target of $36,000. This week saw particularly strong sales performance, reflecting seasonal trends or effective promotional campaigns.
 
-- **Standardized Data Formats**: Ensured consistency across date, currency, and region columns.
-- **Created New Columns**: 
-  - **Customer Table**: Created full name, year of birth, and customer behavior columns (e.g., "Has Children").
-  - **Product Table**: Added discounted price and ensured proper encoding for categorical data.
-  - **Store Table**: Created full address and extracted area code.
-  - **Calendar Table**: Added time-related columns like the start of the week, day name, month name, quarter, and year.
-- **Key Measures**:
-  - **Revenue Measures**: Total Revenue, Monthly Revenue, Discounted Revenue, etc.  
-  - **Profit Measures**: Total Profit, Profit Margin.  
-  - **Customer Metrics**: Average Order Value (AOV), Repeat Purchase Rate, Customer Lifetime Value (CLV).  
-  - **Transaction Metrics**: Total Transactions, Average Basket Size.  
-  - **Return Metrics**: Return Rate, Total Returns.  
+### **KPIs & Metrics**
+
+Several KPIs and metrics were analyzed, including:
+
+- **Total Revenue**: Measures the total revenue generated from all transactions.
+- **Total Profit**: Represents the total profit made from all transactions.
+- **Return Rate**: The percentage of products returned by customers.
+- **Average Order Value (AOV)**: Represents the average amount spent per order.
+- **Sales Growth**: Measures the percentage change in revenue over time.
+- **Revenue by Product Category**: Breaks down the total revenue by product category to assess profitability.
 
 ---
 
@@ -212,5 +208,3 @@ Key data cleaning and transformation steps included:
 ## **Conclusion**
 
 This dashboard serves as an effective tool for analyzing Maven Market's top-line performance, understanding customer behavior, and evaluating product performance across different time periods. The analysis provides valuable insights for informing strategic business decisions.
-
----
