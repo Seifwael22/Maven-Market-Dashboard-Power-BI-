@@ -95,9 +95,9 @@ The data model for this analysis follows a **star schema** design, featuring two
 - **Transactional Data** and **Return Data** are linked to dimension tables (Customers, Products, Regions, Stores, Calendar) via foreign keys.
 - **Products** is connected through **Product ID**, **Customers** through **Customer ID**, and **Regions** via **Region ID**.
 - **Stores** is linked to **Transactional Data** by **Store ID**, and **Calendar** connects to both fact tables via **Date**.
+- **Regions** and **Stores** are connected, creating a **snowflake schema** relationship between these two dimension tables.
 
-
-This star schema allows for efficient querying and analysis, ensuring clear separation between transactional details and dimension attributes (customers, products, etc.), making it easier to analyze data across different dimensions like time, geography, and product categories.
+This hybrid schema (star and snowflake) allows for efficient querying and analysis while maintaining some level of normalization. The **star schema** provides simplicity and fast query performance, while the **snowflake schema** adds structure by normalizing the data, ensuring better organization and reducing redundancy. This setup supports detailed analysis across different dimensions like time, geography, and product categories.
 
 ---
 
@@ -105,17 +105,18 @@ This star schema allows for efficient querying and analysis, ensuring clear sepa
 
 The dashboard includes the following visualizations to present the data effectively:
 
-- **KPIs**: Show total revenue, total profit, AOV, etc., for a quick overview of business performance.
-- **Matrix**: Used to analyze product performance across various product brands and categories.
-- **Treemap**: Provides a visual representation of product sales data in a hierarchical format.
-- **Gauge Chart**: Helps compare actual vs. target values (revenue, profit).
-- **Bar Charts**: Displays performance trends over time for revenue, sales, and more.
-- **Cards**: Show individual KPIs like total revenue, total transactions, etc.
-- **Line Charts**: Visualize time-based trends in revenue, profit, and customer data.
-- **Line and Column Chart**: Used to compare multiple KPIs over time in one visual.
-- **Slicers**: Allow users to filter data by product category, region, date, etc.
-- **Donut Charts**: Show proportions of data, such as revenue by region.
-- **Maps**: Visualize sales data across different geographical regions.
+- **KPIs**  
+- **Matrix**  
+- **Treemap**  
+- **Gauge Chart**  
+- **Bar Charts**  
+- **Cards**  
+- **Line Charts**  
+- **Line and Column Chart**  
+- **Slicers**  
+- **Donut Charts**  
+- **Maps**  
+
 
 ---
 
@@ -124,6 +125,7 @@ The dashboard includes the following visualizations to present the data effectiv
 ### **1. Top-Line Performance Page**
 
 On this page, we explored key performance metrics, including total transaction values, total profits, and return rates across product brands. The main features include:
+
 - **Matrix Visualization**: Displays total transaction, total profit, profit margin, and return rate for each product brand.
 - **Drillthrough Functionality**: Allows users to focus on specific product brands by drilling through to the Product Brand Details page.
 - **KPIs**: Displays KPIs for monthly revenue, current month transactions, current month profit, and returns.
@@ -131,6 +133,8 @@ On this page, we explored key performance metrics, including total transaction v
 - **Treemap**: Similar to the map, but hierarchical, showing the same data by country, state, and city.
 - **Clustered Column Chart**: Weekly revenue trending to visualize fluctuations in revenue over time.
 - **Gauge Chart**: Compares actual revenue against target revenue.
+- **Date Slicer**: Includes a slider to filter data between the years 1997 and 1998, allowing for time-based analysis.
+
 
 ![image](https://github.com/user-attachments/assets/d2fcbf65-d9a7-4681-a202-4785d0ae8d55)
 
@@ -173,12 +177,12 @@ The dataset was cleaned and transformed in the following ways to ensure it was r
   - **Product Table**: Added a discounted price column and ensured proper encoding for categorical data.
   - **Store Table**: Created a full address column and extracted the area code.
   - **Calendar Table**: Added additional columns for time-based analysis such as start of the week, day name, month name, quarter, and year.
-- **Measures**:
-  - **All Transactions**: Measures total transactions across time.
-  - **AOV**: Calculates the average order value for all customers.
-  - **Return Rate**: Measures the percentage of returns.
-  - **Discounted Profit and Revenue**: Tracks revenue and profit with respect to discounts.
-  - **Customer Lifetime Value (CLV)**: Calculates the potential future value of a customer.
+- **Key Measures**:
+  - **Revenue Measures**: Total Revenue, Monthly Revenue, Discounted Revenue, etc.  
+  - **Profit Measures**: Total Profit, Profit Margin.  
+  - **Customer Metrics**: Average Order Value (AOV), Repeat Purchase Rate, Customer Lifetime Value (CLV).  
+  - **Transaction Metrics**: Total Transactions, Average Basket Size.  
+  - **Return Metrics**: Return Rate, Total Returns.  
 
 ---
 
@@ -186,7 +190,6 @@ The dataset was cleaned and transformed in the following ways to ensure it was r
 
 - **Data Cleaning**: Dealing with missing data and formatting inconsistencies was one of the challenges.
 - **Handling Relationships**: Ensuring the proper relationships between tables was crucial for creating a functional data model.
-- **Performance**: With large datasets, some performance issues were faced, especially when applying complex DAX measures.
 
 ---
 
