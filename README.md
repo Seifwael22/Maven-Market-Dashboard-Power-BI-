@@ -22,9 +22,11 @@ The primary goal of this project is to:
 3. [Technologies Used](#technologies-used)
 4. [Visualizations](#visualizations)
 5. [Data Cleaning & Transformation](#data-cleaning--transformation)
-6. [Challenges Faced](#challenges-faced)
-7. [Key Takeaways](#key-takeaways)
-8. [Next Steps](#next-steps)
+6. [Data Modeling](#data-modeling)
+7. [Challenges Faced](#challenges-faced)
+8. [Key Takeaways](#key-takeaways)
+9. [Next Steps](#next-steps)
+10. [Dashboard Pages](#dashboard-pages)
 
 ---
 
@@ -38,8 +40,9 @@ Several KPIs and metrics were focused on in this analysis, including:
 - **Total Profit**: Represents the total profit made from all transactions.
 - **Return Rate**: The percentage of products that were returned by customers.
 - **Average Order Value (AOV)**: Represents the average amount spent per order.
-- **Repeat Purchase Rate**: Measures how often customers make repeat purchases.
-- **Customer Lifetime Value (CLV)**: Indicates the total value a customer brings over their lifetime.
+- **Sales Growth**: Measures the percentage change in revenue over time.
+- **Revenue by Product Category**: Breaks down the total revenue by product category to assess which categories are the most profitable.
+
 
 ### **Main Findings**
 - **Revenue Trends**: The analysis revealed fluctuations in revenue in both 1997 and 1998. Understanding these fluctuations helps identify peak sales periods and product performance.
@@ -62,12 +65,39 @@ Several KPIs and metrics were focused on in this analysis, including:
 
 - **Power BI**: Used to create interactive dashboards and visualizations.
 - **DAX**: Used for creating measures and calculated columns, including KPIs like total revenue, average order value, and repeat purchase rate.
-- **Excel**: Used for cleaning and organizing the data before importing it into Power BI for analysis.
 
 ### **Techniques Used**
-- **Data Cleaning**: Ensuring consistency in columns, such as date formatting, categorical values (e.g., low fat, recyclable), and customer data.
+- **Data Cleaning**: Ensured that date, currency, and region-related columns were consistent across the dataset.
 - **DAX Functions**: Created several DAX measures to calculate key metrics like total revenue, repeat purchase rate, and customer lifetime value.
 - **Conditional Formatting**: Applied to various visuals for better insight presentation (e.g., color bars for performance metrics).
+
+---
+
+## **Data Modeling**
+![image](https://github.com/user-attachments/assets/7ce3261f-25b9-42cc-9f82-e3b2263f2600)
+
+### **Star Schema**
+The data model for this analysis follows a **star schema** design, featuring two fact tables and several dimension tables that provide context for deeper insights.
+
+- **Fact Tables**:
+  - **Transactional Data**: This fact table captures all sales-related data, including quantities sold, revenue, and cost associated with each transaction.
+  - **Return Data**: This fact table stores details about product returns, helping to measure return rates and calculate the impact of returns on the business.
+
+- **Dimension Tables**:
+  - **Customers**: This table holds information about the customers, such as customer ID, names, demographics (age, gender, occupation), and location data (e.g., city, country).
+  - **Products**: Contains information on the products, including product ID, name, category, and retail price.
+  - **Regions**: This table includes geographic data such as country, state, and city, which is useful for analyzing performance by location.
+  - **Stores**: Represents the stores where products were sold, with data about store IDs and locations.
+  - **Calendar**: Contains time-related data such as the date, month, quarter, and year, enabling time-based analysis (e.g., monthly, quarterly performance, YTD comparisons).
+
+### **Relationships**
+
+- **Transactional Data** and **Return Data** are linked to dimension tables (Customers, Products, Regions, Stores, Calendar) via foreign keys.
+- **Products** is connected through **Product ID**, **Customers** through **Customer ID**, and **Regions** via **Region ID**.
+- **Stores** is linked to **Transactional Data** by **Store ID**, and **Calendar** connects to both fact tables via **Date**.
+
+
+This star schema allows for efficient querying and analysis, ensuring clear separation between transactional details and dimension attributes (customers, products, etc.), making it easier to analyze data across different dimensions like time, geography, and product categories.
 
 ---
 
@@ -86,6 +116,50 @@ The dashboard includes the following visualizations to present the data effectiv
 - **Slicers**: Allow users to filter data by product category, region, date, etc.
 - **Donut Charts**: Show proportions of data, such as revenue by region.
 - **Maps**: Visualize sales data across different geographical regions.
+
+---
+
+## **Dashboard Pages**
+
+### **1. Top-Line Performance Page**
+
+On this page, we explored key performance metrics, including total transaction values, total profits, and return rates across product brands. The main features include:
+- **Matrix Visualization**: Displays total transaction, total profit, profit margin, and return rate for each product brand.
+- **Drillthrough Functionality**: Allows users to focus on specific product brands by drilling through to the Product Brand Details page.
+- **KPIs**: Displays KPIs for monthly revenue, current month transactions, current month profit, and returns.
+- **Map**: Visualizes sales data by country, with drillthrough functionality for states and cities.
+- **Treemap**: Similar to the map, but hierarchical, showing the same data by country, state, and city.
+- **Clustered Column Chart**: Weekly revenue trending to visualize fluctuations in revenue over time.
+- **Gauge Chart**: Compares actual revenue against target revenue.
+
+![image](https://github.com/user-attachments/assets/d2fcbf65-d9a7-4681-a202-4785d0ae8d55)
+
+
+### **2. Product Brand Details Page**
+
+This page provides in-depth details about specific product brands:
+- **Brand Name Card**: Displays the selected brand, drilled through from the Top-Line Performance page.
+- **Stacked Bar Chart**: Shows products sorted by revenue for the selected product brand.
+- **Pie Chart**: Displays revenue by price tier for the selected brand.
+- **Donut Charts**: Visualizes the proportion of products that are low-fat and recyclable.
+- **Gauge Chart**: Shows current month returns against the target returns for the selected brand.
+- **Line Chart**: Visualizes weekly profit for the selected product brand.
+- **Area Chart**: Displays weekly returns trends.
+
+![image](https://github.com/user-attachments/assets/c4421388-692a-4dd6-9faa-94d9830e9e9a)
+
+### **3. Customer Details Page**
+
+This page focuses on customer-level analysis:
+- **Table**: Displays customer names alongside their total revenue and total transactions.
+- **KPI**: Shows the monthly average basket size for customers.
+- **Donut Charts**: Visualizes the distribution of transactions by gender and occupation.
+- **Area Map**: Displays customer location data, with drillthrough functionality.
+- **Treemap**: Shows total transactions by age group.
+- **Line Clustered Column Chart**: Displays monthly trends for transactions and revenue.
+- **Cards**: Represents the top customer by revenue and the customer with the most orders.
+
+![image](https://github.com/user-attachments/assets/1dbed253-b94f-447a-a323-7ea0712a8a53)
 
 ---
 
@@ -110,44 +184,30 @@ The dataset was cleaned and transformed in the following ways to ensure it was r
 
 ## **Challenges Faced**
 
-### **Challenges**:
-- **Handling Missing Data**: Ensuring that missing data in certain fields was addressed for accurate analysis.
-- **Data Inconsistencies**: The dataset had some inconsistencies in product descriptions and categorization, requiring significant cleaning before analysis.
-- **Calculating Repeat Purchases**: Establishing a clear logic for repeat purchase rate, especially considering customers who made purchases and never returned.
-
-### **How Challenges Were Overcome**:
-- **Data Transformation**: Utilized Power BI’s transformation tools to ensure columns were consistent and cleaned.
-- **DAX Measures**: Applied logical checks using DAX to handle edge cases (e.g., repeat purchases, missing values).
-- **Customer Segmentation**: Used customer segmentation to identify and handle varying behaviors (e.g., first-time vs. repeat customers).
+- **Data Cleaning**: Dealing with missing data and formatting inconsistencies was one of the challenges.
+- **Handling Relationships**: Ensuring the proper relationships between tables was crucial for creating a functional data model.
+- **Performance**: With large datasets, some performance issues were faced, especially when applying complex DAX measures.
 
 ---
 
 ## **Key Takeaways**
 
-### **Main Takeaways**:
-- **Product Performance**: Identified the products that contributed the most to total revenue and profit.
-- **Customer Behavior**: Found that a small segment of customers were responsible for repeat purchases, highlighting the importance of customer retention.
-- **Revenue Trends**: Sales were generally higher in certain months, indicating potential seasonal trends.
-
-### **Why These Insights are Valuable**:
-These insights can guide businesses in:
-- Focusing marketing efforts on high-performing products and customers.
-- Identifying trends in customer purchasing behavior.
-- Making informed decisions around inventory and product offerings.
+- The analysis shows that product performance varies widely across brands and regions, with some areas performing significantly better than others.
+- The importance of cleaning and transforming data cannot be overstated—it is a critical step before diving into analysis.
+- Using drillthrough functionality helped improve the interactivity and usability of the dashboard.
 
 ---
 
 ## **Next Steps**
 
-### **Future Improvements**:
-- **Deeper Analysis**: Further explore regions and stores to understand performance differences and identify areas of improvement.
-- **Customer Segmentation**: Use advanced segmentation to target specific customer groups more effectively.
-
-### **Further Analysis**:
-- **Predictive Analysis**: Implement machine learning techniques to predict future sales trends and customer behavior.
-- **Churn Prediction**: Analyze customer churn and take preventive actions based on insights.
+- **Expand Analysis**: Future analyses could include more years of data to identify longer-term trends.
+- **Customer Segmentation**: More detailed customer segmentation could provide deeper insights into the purchasing behavior of specific groups.
 
 ---
 
-Feel free to use this markdown as your `README.md` file. Once you paste it in your repository, it will look polished and ready for potential employers or collaborators. Let me know if you need further edits or clarifications!
+## **Conclusion**
+
+This dashboard serves as an effective tool for analyzing the Maven Market's top-line performance, understanding customer behavior, and evaluating product performance across different time periods. Through the use of Power BI, this analysis has provided valuable insights that can inform strategic business decisions.
+
+---
 
