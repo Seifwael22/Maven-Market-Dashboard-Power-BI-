@@ -9,7 +9,7 @@ The dataset used for this analysis is the **Maven Market dataset**, which includ
 
 ### **Goal of the Analysis**
 The primary objectives of this project are:
-- Analyze **top-line performance** for 1997 and 1998.
+- Analyze **top-line performance** for 1998.
 - Understand key metrics such as **total revenue**, **total profit**, **sales trends**, and **customer behavior**.
 - Present insights through various visualizations to inform business decision-making.
 
@@ -29,8 +29,15 @@ The primary objectives of this project are:
 10. [Dashboard Pages](#dashboard-pages)
 
 ---
+## **Key Insights from 1998 Data**
 
-## **Key Metrics & Insights**
+- **Hermanos** has the **most transactions** (5,342) and **highest profit** ($21,753), outperforming other products in terms of both volume and financial contribution.
+- **Plato** leads in **profit margin** with a remarkable **63.55%**, indicating its strong profitability despite its relatively lower volume of transactions.
+- **Horatio** experiences the **highest return rate** (1.26%), which suggests potential issues with customer satisfaction or product quality.
+- The **USA** region has the **most transactions** (93,986), driving a significant portion of the sales, with the highest concentration of revenue coming from this region.
+- **Washington** stands out with the **highest number of transactions** in 1998, demonstrating its dominant market presence compared to other states.
+- **Weekly revenue peaked on 12/6/1998**, with a total of **$44,859.59**, exceeding the target of $36,000. This week saw particularly strong sales performance, reflecting seasonal trends or effective promotional campaigns.
+
 
 ### **KPIs & Metrics**
 
@@ -131,7 +138,7 @@ On this page, key performance metrics like transaction values, profits, and retu
 - **Gauge Chart**: Compares actual revenue against target revenue.
 - **Date Slicer**: A slider to filter data between the years 1997 and 1998 for time-based analysis.
 
-![image](https://github.com/user-attachments/assets/d2fcbf65-d9a7-4681-a202-4785d0ae8d55)
+![image](https://github.com/user-attachments/assets/dec7dbc5-9acf-4f37-b782-589146ffe09a)
 
 ### **2. Product Brand Details Page**
 
@@ -144,7 +151,7 @@ Provides in-depth details about selected product brands:
 - **Line Chart**: Weekly profit trends for the selected brand.
 - **Area Chart**: Visualizes weekly returns trends.
 
-![image](https://github.com/user-attachments/assets/c4421388-692a-4dd6-9faa-94d9830e9e9a)
+![image](https://github.com/user-attachments/assets/e4b2c634-1500-4193-bd7e-31218fefbdf9)
 
 ### **3. Customer Details Page**
 
@@ -157,7 +164,7 @@ Focuses on customer-level analysis:
 - **Line Clustered Column Chart**: Monthly trends for transactions and revenue.
 - **Cards**: Displays top customer by revenue and the customer with most orders.
 
-![image](https://github.com/user-attachments/assets/1dbed253-b94f-447a-a323-7ea0712a8a53)
+![image](https://github.com/user-attachments/assets/ffdb61f6-5f05-43e4-a2a8-70c565a76b09)
 
 ---
 
